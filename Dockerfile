@@ -9,7 +9,7 @@ COPY settings.gradle ./
 RUN gradle dependencies --no-daemon
 
 COPY ./src ./src
-RUN gardle bootjar --no-daemon
+RUN gradle bootjar --no-daemon
 
 # Run
 

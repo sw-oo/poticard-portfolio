@@ -1,0 +1,35 @@
+version: '8.3'
+
+services:
+  db:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=qwer1234
+      - MARIADB_DATABASE=poticard
+    volumes:
+      - ./db:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8443:8443"
+    environment:
+      - DB_URL=jdbc:mariadb://db:3306/poticard
+      - DB_USER=root
+      - DB_PASS=qwer1234
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - backend

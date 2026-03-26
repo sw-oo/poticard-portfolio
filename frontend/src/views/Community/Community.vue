@@ -766,7 +766,7 @@ const openNamecard = async () => {
   position: relative;
   width: 100%;
   height: 100%;
-  // transition: transform var(--flip-duration, 0.7s) var(--flip-easing, ease-in-out);
+  /* transition: transform var(--flip-duration, 0.7s) var(--flip-easing, ease-in-out); */
   transform-style: preserve-3d;
 }
 
